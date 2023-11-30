@@ -1,8 +1,8 @@
-import cv2
+import cv2 as cv
 import numpy as np
 from PIL import Image
 import os
-recognizer = cv2.face.LBPHFaceRecognizer_create()
+recognizer = cv.face.LBPHFaceRecognizer_create()
 path="dataset"
 def getPerson(path):
     #put recorded pictures in a list
@@ -20,11 +20,11 @@ def getPerson(path):
         Id=int(Id)
         faces.append(faceNP)
         ids.append(Id)
-        cv2.imshow("Training on recorded faces",faceNP)
-        cv2.waitKey(1)
+        cv.imshow("Training on recorded faces",faceNP)
+        cv.waitKey(1)
     return ids, faces
 ids, face = getPerson(path)
 recognizer.train(face, np.array(ids))
 recognizer.write("trainer.yml")
-cv2.destroyAllWindows()
+cv.destroyAllWindows()
 print("")
