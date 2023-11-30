@@ -27,4 +27,3 @@ while True:
 video.release()
 cv.destroyAllWindows()
 print("Person recording complete")
-#zeb
