@@ -18,11 +18,11 @@ lst=Functions.lst_of_students()
 minWidth = 0.1*video.get(3)
 minHeight = 0.1*video.get(4)
 #timer
-counter=0
-start=datetime.datetime.now()
+start=datetime.datetime.now().second + 1
 #starting detection
 while True:
     #starting camera and mirroring it and flipping it since we flipped it in recording
+    counter = (datetime.datetime.now().second - start) #the start of the counter
     ret,frame=video.read()
     frame=cv.flip(frame,1)
     gray=cv.cvtColor(frame, cv.COLOR_BGR2GRAY)
@@ -41,11 +41,13 @@ while True:
             cv.rectangle(frame,(x,y),(x+w,y+h),(50,50,255),2)
             cv.rectangle(frame,(x,y-40),(x+w,y),(50,50,255),-1)
             cv.putText(frame, name_list[serial]+str(int(conf)), (x, y-10),cv.FONT_HERSHEY_SIMPLEX,0.8,(255,255,255),2)
+            #gets the name of the captured person and change their attendance to "Present"
             person=name_list[serial]
-            print(person)
+            print(person) #test
             for dict in lst:
                 if dict["Student"] == person:
                     dict.update({"Attendance":"Present"})
+
         #show unknown
         else:
             cv.rectangle(frame, (x,y), (x+w, y+h), (0,0,255), 1)
@@ -59,12 +61,18 @@ while True:
     k = cv.waitKey(10) & 0xff
     if k == 27:
         break
-    if counter == 20:
+    if counter == 20: # when counter reaches 20 seconds it quits
         break
-print(lst)
+
+#set as "Absent" for the uncaptured students in the given time
 for dict in lst:
     if dict["Attendance"] != "Present":
         dict.update({"Attendance":"Absent"})
-Functions.update_attendance(lst)
+
+
 video.release()
 cv.destroyAllWindows()
+#update the attendance_Table
+Functions.update_attendance(lst)
+#Displays the Menu for the teacher to check
+Functions.teacher_menu()
