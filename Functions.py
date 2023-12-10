@@ -42,6 +42,7 @@ def show_attended():
                 lst.append(row)
     for dict in lst:
         print(f"Student : {dict['Student']} | Class : {dict['Class']}")
+
 def teacher_menu():
     choice = None
     while (choice != 4):

@@ -69,7 +69,6 @@ for dict in lst:
     if dict["Attendance"] != "Present":
         dict.update({"Attendance":"Absent"})
 
-
 video.release()
 cv.destroyAllWindows()
 #update the attendance_Table
