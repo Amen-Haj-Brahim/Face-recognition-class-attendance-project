@@ -64,7 +64,7 @@ while True:
     if counter == 20: # when counter reaches 20 seconds it quits
         break
 
-#set as "Absent" for the uncaptured students in the given time
+#set as "Absent" the uncaptured students in the given time
 for dict in lst:
     if dict["Attendance"] != "Present":
         dict.update({"Attendance":"Absent"})
