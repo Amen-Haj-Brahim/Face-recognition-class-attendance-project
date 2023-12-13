@@ -1,4 +1,4 @@
-Student,Class,Attendance
-Amine,Automata,Absent
-Amen,Automata,Present
-Aziz,Automata,Present
+Student,Class,Attendance,date
+Amine,ML,Absent,2023-12-13
+Amen,ML,Present,2023-12-13
+Aziz,ML,Present,2023-12-13

@@ -47,7 +47,8 @@ while True:
             person=name_list[serial]
             print(person) #test
             for dict in lst:
-                dict.update({"Class":subject})
+
+                dict.update({"Class":subject,"date":Functions.todays_date()})
                 if dict["Student"] == person:
                     dict.update({"Attendance":"Present"})
 

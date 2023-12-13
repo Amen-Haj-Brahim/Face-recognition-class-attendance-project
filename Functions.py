@@ -18,7 +18,7 @@ def show_all_students():
     print(df)
 def update_attendance(student_lst):
     with open("Attendance_Table.csv", 'w', newline='') as file:
-        writer = csv.DictWriter(file,['Student', 'Class', 'Attendance'])
+        writer = csv.DictWriter(file,['Student', 'Class', 'Attendance','date'])
         writer.writeheader()
         writer.writerows(student_lst)
 
@@ -63,3 +63,6 @@ def teacher_menu():
                     break
         else:
             print('wrong input!')
+def todays_date():
+    return  datetime.datetime.today().date()
+s=todays_date()
