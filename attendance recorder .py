@@ -19,6 +19,8 @@ minWidth = 0.1*video.get(3)
 minHeight = 0.1*video.get(4)
 #timer
 start=datetime.datetime.now().second + 1
+#ask for Class name
+subject=input("enter subject name:")
 #starting detection
 while True:
     #starting camera and mirroring it and flipping it since we flipped it in recording
@@ -45,6 +47,8 @@ while True:
             person=name_list[serial]
             print(person) #test
             for dict in lst:
+
+                dict.update({"Class":subject,"date":Functions.todays_date()})
                 if dict["Student"] == person:
                     dict.update({"Attendance":"Present"})
 
